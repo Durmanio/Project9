@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cmath>
+
+int calculateMinSteps(int x, int y) {
+    // Визначення різниці між `x` і `y`
+    int diff = y - x;
+
+    // Обчислення максимально можливої довжини кроку
+    int maxStepLength = std::sqrt(diff);
+
+    if (diff == maxStepLength * maxStepLength)
+        return maxStepLength * 2 - 1;
+
+    // Перевіряємо, чи можливо додати ще один крок
+    if (diff <= maxStepLength * maxStepLength + maxStepLength)
+        return maxStepLength * 2;
+
+    return maxStepLength * 2 + 1;
+}
+
+int main() {
+    int x, y;
+
+    std::cout << "Enter the starting value (x): ";
+    std::cin >> x;
+
+    std::cout << "Enter the target value (y): ";
+    std::cin >> y;
+
+    int minSteps = calculateMinSteps(x, y);
+
+    std::cout << "Minimum number of steps: " << minSteps << std::endl;
+
+    return 0;
+}
